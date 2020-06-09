@@ -42,15 +42,6 @@ const Board = (props) => {
     setRemainingBadGuesses(10);
   };
 
-  // EFFECT HOOKS
-  // ---
-
-  // must wait until guessedLetters state is changed in call handler before
-  // checking for a game over
-  useEffect(() => {
-    checkGameOver();
-  }, [guessedLetters, correctGuesses, incorrectGuesses, remainingBadGuesses]);
-
   // GAME LOGIC METHODS
   // ---
   // update the guessed letter arrays and the number of bad guesses left
@@ -65,8 +56,13 @@ const Board = (props) => {
     }
   };
 
-  // check if the game is over and update state vars accordingly
-  const checkGameOver = () => {
+  // EFFECT HOOKS
+  // ---
+
+  // must wait until guessedLetters state is changed in call handler before
+  // checking for a game over
+  useEffect(() => {
+    // check if the game is over and update state vars accordingly
     // correct guesses array may contain duplicate letters, so need to dedupe word letters
     const uniqueLettersInWord = new Set(word);
 
@@ -81,7 +77,13 @@ const Board = (props) => {
         setIsGameOver(true);
       }
     }
-  };
+  }, [
+    word,
+    guessedLetters,
+    correctGuesses,
+    incorrectGuesses,
+    remainingBadGuesses,
+  ]);
 
   return (
     <main className="board" data-testid="board">
