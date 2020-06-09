@@ -15,7 +15,9 @@ const Board = (props) => {
 
   // setup state
   const [word, setWord] = useState(startingWord);
-  const [remainingBadGuesses, setRemainingBadGuesses] = useState(10);
+  const [remainingBadGuesses, setRemainingBadGuesses] = useState(
+    props.maxBadGuesses
+  );
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
@@ -81,11 +83,13 @@ const Board = (props) => {
     }
   };
 
-  console.log("render");
   return (
     <main className="board" data-testid="board">
       <Title />
-      <Gallows />
+      <Gallows
+        remainingBadGuesses={remainingBadGuesses}
+        maxBadGuesses={props.maxBadGuesses}
+      />
       <CorrectGuesses word={word} correctGuesses={correctGuesses} />
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       {!isGameOver && (
