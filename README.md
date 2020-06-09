@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hangman
 
-## Available Scripts
+A small game made using `create-react-app` for the Citzens Advice technical test.
 
-In the project directory, you can run:
+## Planning
 
-### `yarn start`
+### High quality visualisation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![game visualisation](/docs/vis.jpg)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Component List
 
-### `yarn test`
+- Title component
+- Board component
+  - Gallows component
+  - CorrectGuesses component
+  - IncorrectGuesses component
+  - RemainingGuesses component
+  - PotentialGuesses component
+  - Result component
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Potential to create a `LetterComponent` and use composition to make the correct, incoorect and potential guesses components
 
-### `yarn build`
+### Gallows image
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Gallows image will be an SVG made of different paths, one for each element to be drawn. Gallows will use `guessesRemaining` somehow to determine which svg path elements to render.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### State
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Board component will own the following state and pass down data and methods via props into its child components as required.
 
-### `yarn eject`
+```json
+{
+  "word": "hangman",
+  "correctGuesses": ["h", "g"],
+  "incorrectGuesses": ["x", "y", "z"],
+  "guessesReamining": 10,
+  "hasWon": false
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use react testing library and jest to perform the following tests:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- BoardComponent
+  - renders
+  - handles potential guess button click with correct arguments
+  - determines hasWon correctly when game is won
+  - determines hasWon correctly when game is lost
+- GallowsComponent
+  - renders
+  - shows correct elements given number of remaining guesses
+- CorrectGuessesComponent
+  - renders
+  - shows correct number of blank spaces
+  - shows letters in correct place when guessed
+- IncorrectGuessesComponent
+  - renders
+  - shows all incorrectly guessed letters
+- RemainingGuessesComponent
+  - renders
+  - shows correct number of remaining guesses
+- PotentialGuessesComponent
+  - renders
+  - shows one button for each letter of the alphabet
+  - disables buttons for letters that have already been guesses
+- ResultComponents
+  - renders
+  - is not displayed until the game is finished
+  - shows 'win' message when the game is won
+  - shows 'lose' message when the game is lost
+  - shows 'play again' message when game is won or lost
