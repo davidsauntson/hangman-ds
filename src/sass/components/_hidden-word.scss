@@ -1,0 +1,10 @@
+.hidden-word {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+
+  &__letter {
+    font-size: 70px;
+    color: $color--grey;
+  }
+}

@@ -1,0 +1,23 @@
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__key {
+    flex: 0 0 5%;
+    margin: 5px;
+    font-size: 20px;
+    background-color: $color--grey;
+    color: $color--white;
+    border: none;
+
+    &:focus {
+      outline: 2px solid $color--highlight;
+      outline-offset: 2px;
+    }
+
+    &[disabled] {
+      background-color: #aaa;
+    }
+  }
+}

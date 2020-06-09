@@ -1,0 +1,20 @@
+.gallows {
+  width: 150px;
+  margin: 20px auto;
+
+  svg {
+    stroke: transparent;
+    fill: transparent;
+  }
+
+  @for $i from 0 through 9 {
+    &.gallows--show-#{$i} {
+      svg {
+        #gallows-#{$i} {
+          stroke: $color--grey;
+          fill: $color--grey;
+        }
+      }
+    }
+  }
+}

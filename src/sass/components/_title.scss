@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+  &__heading {
+    color: $color--grey;
+    margin: 0 0 20px 0;
+    font-size: 40px;
+  }
+
+  &__intro {
+    color: $color--grey;
+  }
+}

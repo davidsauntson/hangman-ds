@@ -1,0 +1,10 @@
+.lives-left {
+  text-align: center;
+  font-weight: bold;
+  color: $color--grey;
+  margin: 20px;
+
+  &__count {
+    margin-right: 4px;
+  }
+}

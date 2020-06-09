@@ -7,6 +7,7 @@ const PotentialGuesses = (props) => {
         const isDisabled = props.guessedLetters.indexOf(letter) !== -1;
         return (
           <button
+            className="keyboard__key"
             data-testid="potential-guess"
             key={letter}
             onClick={() => props.handleGuess(letter)}

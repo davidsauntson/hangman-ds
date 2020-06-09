@@ -7,9 +7,17 @@ const CorrectGuesses = (props) => {
     <section className="hidden-word" data-testid="correct-guesses">
       {wordArray.map((letter, index) => {
         if (props.correctGuesses.indexOf(letter) !== -1) {
-          return <span key={`letter-${index}`}>{letter}</span>;
+          return (
+            <span className="hidden-word__letter" key={`letter-${index}`}>
+              {letter}
+            </span>
+          );
         } else {
-          return <span key={`letter-${index}`}>_</span>;
+          return (
+            <span className="hidden-word__letter" key={`letter-${index}`}>
+              _
+            </span>
+          );
         }
       })}
     </section>

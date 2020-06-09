@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./sass/app.scss";
 
 import Board from "./components/board/Board";
 

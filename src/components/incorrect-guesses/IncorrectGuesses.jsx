@@ -2,9 +2,11 @@ import React from "react";
 
 const IncorrectGuesses = (props) => {
   return (
-    <div data-testid="incorrect-guesses">
+    <div className="incorrect-guesses" data-testid="incorrect-guesses">
       {props.incorrectGuesses.map((letter) => (
-        <span key={letter}>{letter}</span>
+        <span className="incorrect-guesses__letter" key={letter}>
+          {letter}
+        </span>
       ))}
     </div>
   );

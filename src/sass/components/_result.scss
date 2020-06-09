@@ -1,0 +1,39 @@
+.result {
+  $block: &;
+
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
+
+  &__button {
+    background-color: $color--grey;
+    color: $color--white;
+    border: none;
+    font-size: 20px;
+    padding: 20px;
+
+    &:focus {
+      outline: 2px solid $color--highlight;
+      outline-offset: 2px;
+    }
+  }
+
+  &--lost {
+    #{$block}__text {
+      color: $color--red;
+    }
+  }
+
+  &--won {
+    #{$block}__text {
+      color: $color--green;
+    }
+  }
+}

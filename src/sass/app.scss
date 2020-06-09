@@ -1,1 +1,13 @@
 @import "./variables";
+
+@import "./layout/reset";
+
+@import "./components/hangman";
+@import "./components/board";
+@import "./components/title";
+@import "./components/gallows";
+@import "./components/keyboard";
+@import "./components/hidden-word";
+@import "./components/incorrect-guesses";
+@import "./components/lives-left";
+@import "./components/result";
