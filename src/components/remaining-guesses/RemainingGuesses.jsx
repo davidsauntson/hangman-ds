@@ -1,5 +1,7 @@
 import React from "react";
 
-export default RemainingGuesses = () => {
+const RemainingGuesses = () => {
   return <div>I am the remaining guesses</div>;
 };
+
+export default RemainingGuesses;

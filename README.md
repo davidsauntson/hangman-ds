@@ -34,7 +34,7 @@ Board component will own the following state and pass down data and methods via 
   "word": "hangman",
   "correctGuesses": ["h", "g"],
   "incorrectGuesses": ["x", "y", "z"],
-  "guessesReamining": 10,
+  "guessesRemaining": 10,
   "hasWon": false
 }
 ```
@@ -46,8 +46,7 @@ Use react testing library and jest to perform the following tests:
 - BoardComponent
   - renders
   - handles potential guess button click with correct arguments
-  - determines hasWon correctly when game is won
-  - determines hasWon correctly when game is lost
+  - displays results instead of letters when game over
 - GallowsComponent
   - renders
   - shows correct elements given number of remaining guesses
@@ -67,7 +66,6 @@ Use react testing library and jest to perform the following tests:
   - disables buttons for letters that have already been guesses
 - ResultComponents
   - renders
-  - is not displayed until the game is finished
   - shows 'win' message when the game is won
   - shows 'lose' message when the game is lost
   - shows 'play again' message when game is won or lost

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default IncorrectGuesses = () => {
+const IncorrectGuesses = () => {
   return <div>I am the incorrect guesses</div>;
 };
+
+export default IncorrectGuesses;

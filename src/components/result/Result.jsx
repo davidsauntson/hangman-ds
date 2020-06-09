@@ -1,5 +1,7 @@
 import React from "react";
 
-export default Result = () => {
+const Result = () => {
   return <div>I am the Result</div>;
 };
+
+export default Result;
