@@ -7,7 +7,7 @@ const alphabet = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 function App() {
   return (
-    <div className="hangman">
+    <div className="hangman" data-testid="hangman">
       <Board alphabet={alphabet} />
     </div>
   );
