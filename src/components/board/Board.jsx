@@ -49,7 +49,7 @@ const Board = (props) => {
       <Title />
       <Gallows />
       <CorrectGuesses word={word} correctGuesses={correctGuesses} />
-      <IncorrectGuesses />
+      <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       <RemainingGuesses remainingBadGuesses={remainingBadGuesses} />
       <PotentialGuesses
         alphabet={props.alphabet}

@@ -1,7 +1,13 @@
 import React from "react";
 
-const IncorrectGuesses = () => {
-  return <div>I am the incorrect guesses</div>;
+const IncorrectGuesses = (props) => {
+  return (
+    <div data-testid="incorrect-guesses">
+      {props.incorrectGuesses.map((letter) => (
+        <span key={letter}>{letter}</span>
+      ))}
+    </div>
+  );
 };
 
 export default IncorrectGuesses;
