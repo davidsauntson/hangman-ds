@@ -24,15 +24,21 @@ const Board = (props) => {
   // handle guess from PotentialGuesses
   const handleGuess = (letter) => {
     setGuessedLetters(guessedLetters.concat(letter));
-    console.log(letter);
+
+    if (word.indexOf(letter) !== -1) {
+      // it is a correct guess!
+      setCorrectGuesses(correctGuesses.concat(letter));
+    } else {
+      // it's a doozy :-(
+      setIncorrectGuesses(incorrectGuesses.concat(letter));
+    }
   };
 
-  console.log(guessedLetters);
   return (
     <main className="board" data-testid="board">
       <Title />
       <Gallows />
-      <CorrectGuesses />
+      <CorrectGuesses word={word} correctGuesses={correctGuesses} />
       <IncorrectGuesses />
       <RemainingGuesses />
       <PotentialGuesses
