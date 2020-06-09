@@ -8,7 +8,13 @@ const Result = (props) => {
     classes += " result--lost";
   }
   return (
-    <div className={classes} data-testid="result">
+    <div
+      className={classes}
+      data-testid="result"
+      aria-label={`You have ${props.hasWon ? " won " : "lost"} the game`}
+      role="alert"
+      aria-live="assertive"
+    >
       {props.hasWon && <span className="result__text">Congratulations!</span>}
       {!props.hasWon && <span className="result__text">Wa waaaaa :-(</span>}
       <button className="result__button" onClick={props.handlePlayAgain}>

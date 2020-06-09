@@ -4,7 +4,12 @@ const CorrectGuesses = (props) => {
   const wordArray = Array.from(props.word);
 
   return (
-    <section className="hidden-word" data-testid="correct-guesses">
+    <div
+      className="hidden-word"
+      data-testid="correct-guesses"
+      aria-live="assertive"
+      aria-label="The word to guess"
+    >
       {wordArray.map((letter, index) => {
         if (props.correctGuesses.indexOf(letter) !== -1) {
           return (
@@ -20,7 +25,7 @@ const CorrectGuesses = (props) => {
           );
         }
       })}
-    </section>
+    </div>
   );
 };
 
