@@ -1,1 +1,1 @@
-export const words = ["panda", "sun", "koala", "grizzly", "polar"];
+export const words = ["PANDA", "SUN", "KOALA", "GRIZZLY", "POLAR"];

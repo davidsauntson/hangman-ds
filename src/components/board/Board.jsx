@@ -14,23 +14,33 @@ const Board = (props) => {
   const startingWord = words[Math.floor(Math.random() * words.length)];
 
   // setup state
-  const [word, setWord] = useState(startingWord);
+  const [word] = useState(startingWord);
   const [remainingBadGuesses, setRemainingBadGuesses] = useState(10);
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [hasWon, setHasWon] = useState(false);
 
+  // EVENT HANDLERS
+  // ---
   // handle guess from PotentialGuesses
   const handleGuess = (letter) => {
     setGuessedLetters(guessedLetters.concat(letter));
 
+    updateGuesses(letter);
+  };
+
+  // GAME LOGIC METHODS
+  // ---
+  // update the guessed letter arrays and the number of bad guesses left
+  const updateGuesses = (letter) => {
     if (word.indexOf(letter) !== -1) {
       // it is a correct guess!
       setCorrectGuesses(correctGuesses.concat(letter));
     } else {
       // it's a doozy :-(
       setIncorrectGuesses(incorrectGuesses.concat(letter));
+      setRemainingBadGuesses(remainingBadGuesses - 1);
     }
   };
 
@@ -40,7 +50,7 @@ const Board = (props) => {
       <Gallows />
       <CorrectGuesses word={word} correctGuesses={correctGuesses} />
       <IncorrectGuesses />
-      <RemainingGuesses />
+      <RemainingGuesses remainingBadGuesses={remainingBadGuesses} />
       <PotentialGuesses
         alphabet={props.alphabet}
         handleGuess={handleGuess}
