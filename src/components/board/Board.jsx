@@ -15,7 +15,7 @@ const Board = (props) => {
 
   // setup state
   const [word, setWord] = useState(startingWord);
-  const [remainingGuesses, setRemainingGuesses] = useState(10);
+  const [remainingBadGuesses, setRemainingBadGuesses] = useState(10);
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);

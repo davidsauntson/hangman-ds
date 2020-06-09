@@ -12,7 +12,7 @@ describe("RemainingGuesses component", () => {
   test("shows correct number of remaining guesses", () => {
     const remainingGuessCount = 4;
     const { getByText } = render(
-      <RemainingGuesses RemainingGuesses={remainingGuessCount} />
+      <RemainingGuesses remainingBadGuesses={remainingGuessCount} />
     );
     expect(getByText(remainingGuessCount.toString())).toBeTruthy();
   });
