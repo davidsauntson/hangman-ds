@@ -14,8 +14,8 @@ const Board = (props) => {
   const startingWord = words[Math.floor(Math.random() * words.length)];
 
   // setup state
-  const [word] = useState(startingWord);
-  const [remainingBadGuesses, setRemainingBadGuesses] = useState(9);
+  const [word, setWord] = useState(startingWord);
+  const [remainingBadGuesses, setRemainingBadGuesses] = useState(10);
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
@@ -30,6 +30,16 @@ const Board = (props) => {
     updateGuesses(letter);
   };
 
+  const handlePlayAgain = () => {
+    setWord(words[Math.floor(Math.random() * words.length)]);
+    setIncorrectGuesses([]);
+    setGuessedLetters([]);
+    setCorrectGuesses([]);
+    setHasWon(false);
+    setIsGameOver(false);
+    setRemainingBadGuesses(10);
+  };
+
   // EFFECT HOOKS
   // ---
 
@@ -37,7 +47,7 @@ const Board = (props) => {
   // checking for a game over
   useEffect(() => {
     checkGameOver();
-  }, [guessedLetters]);
+  }, [guessedLetters, correctGuesses, incorrectGuesses, remainingBadGuesses]);
 
   // GAME LOGIC METHODS
   // ---
@@ -71,6 +81,7 @@ const Board = (props) => {
     }
   };
 
+  console.log("render");
   return (
     <main className="board" data-testid="board">
       <Title />
@@ -87,7 +98,9 @@ const Board = (props) => {
           />
         </>
       )}
-      {isGameOver && <Result />}
+      {isGameOver && (
+        <Result hasWon={hasWon} handlePlayAgain={handlePlayAgain} />
+      )}
     </main>
   );
 };
