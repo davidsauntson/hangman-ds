@@ -10,10 +10,17 @@
     background-color: $color--grey;
     color: $color--white;
     border: none;
+    padding: 5px;
 
+    @media screen and (min-width: $tablet-min) {
+      flex: 0 0 10%;
+      padding: 15px;
+    }
+
+    &:hover,
     &:focus {
-      outline: 2px solid $color--highlight;
-      outline-offset: 2px;
+      cursor: pointer;
+      background-color: $color--highlight;
     }
 
     &[disabled] {

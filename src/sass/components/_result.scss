@@ -19,9 +19,9 @@
     font-size: 20px;
     padding: 20px;
 
+    &:hover,
     &:focus {
-      outline: 2px solid $color--highlight;
-      outline-offset: 2px;
+      background-color: $color--highlight;
     }
   }
 

@@ -3,8 +3,16 @@
   justify-content: space-around;
   padding: 20px;
 
+  @media screen and (min-width: $tablet-min) {
+    justify-content: center;
+  }
+
   &__letter {
     font-size: 70px;
     color: $color--grey;
+
+    @media screen and (min-width: $tablet-min) {
+      margin: 0 20px;
+    }
   }
 }
