@@ -1,5 +1,7 @@
 import React from "react";
 
-export default Gallows = () => {
+const Gallows = () => {
   return <div>I am the gallows</div>;
 };
+
+export default Gallows;
