@@ -18,8 +18,16 @@ const Board = (props) => {
   const [remainingGuesses, setRemainingGuesses] = useState(10);
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState([]);
   const [hasWon, setHasWon] = useState(false);
 
+  // handle guess from PotentialGuesses
+  const handleGuess = (letter) => {
+    setGuessedLetters(guessedLetters.concat(letter));
+    console.log(letter);
+  };
+
+  console.log(guessedLetters);
   return (
     <main className="board" data-testid="board">
       <Title />
@@ -27,7 +35,11 @@ const Board = (props) => {
       <CorrectGuesses />
       <IncorrectGuesses />
       <RemainingGuesses />
-      <PotentialGuesses />
+      <PotentialGuesses
+        alphabet={props.alphabet}
+        handleGuess={handleGuess}
+        guessedLetters={guessedLetters}
+      />
       <Result />
     </main>
   );

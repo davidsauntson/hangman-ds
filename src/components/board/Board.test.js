@@ -10,10 +10,11 @@ describe("Board component", () => {
 
   test("handles letter guess button click with correct args", () => {
     const clickHandler = jest.fn();
-    const { getByText } = render(<Board alphabet="A" />);
+    const alphabet = Array.from("AB");
+    const { getByText } = render(<Board alphabet={alphabet} />);
     const guessA = getByText("A");
 
-    fireEvent.click("guessA");
+    fireEvent.click(guessA);
 
     expect(clickHandler).toHaveBeenCalledTimes(1);
     expect(clickHandler).toHaveBeenCalledWith("A");

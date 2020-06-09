@@ -3,7 +3,7 @@ import "./App.css";
 
 import Board from "./components/board/Board";
 
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const alphabet = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 function App() {
   return (

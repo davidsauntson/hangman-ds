@@ -10,13 +10,13 @@ describe("PontentialGuesses component", () => {
   });
 
   test("shows one button for each letter of the alphabet", () => {
-    const alphabet = "ABC";
+    const alphabet = Array.from("ABC");
     const { getAllByTestId } = render(<PotentialGuesses alphabet={alphabet} />);
     expect(getAllByTestId("potential-guess").length).toBe(alphabet.length);
   });
 
   test("disables buttons for each guessed letter", () => {
-    const alphabet = "ABC";
+    const alphabet = Array.from("ABC");
     const guessedLetters = ["A"];
     const { getByText } = render(
       <PotentialGuesses alphabet={alphabet} guessedLetters={guessedLetters} />
