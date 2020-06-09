@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Title from "../title/Title";
 import Gallows from "../gallows/Gallows";
@@ -15,20 +15,29 @@ const Board = (props) => {
 
   // setup state
   const [word] = useState(startingWord);
-  const [remainingBadGuesses, setRemainingBadGuesses] = useState(10);
+  const [remainingBadGuesses, setRemainingBadGuesses] = useState(9);
   const [correctGuesses, setCorrectGuesses] = useState([]);
   const [incorrectGuesses, setIncorrectGuesses] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [hasWon, setHasWon] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   // EVENT HANDLERS
   // ---
   // handle guess from PotentialGuesses
   const handleGuess = (letter) => {
     setGuessedLetters(guessedLetters.concat(letter));
-
     updateGuesses(letter);
   };
+
+  // EFFECT HOOKS
+  // ---
+
+  // must wait until guessedLetters state is changed in call handler before
+  // checking for a game over
+  useEffect(() => {
+    checkGameOver();
+  }, [guessedLetters]);
 
   // GAME LOGIC METHODS
   // ---
@@ -44,19 +53,41 @@ const Board = (props) => {
     }
   };
 
+  // check if the game is over and update state vars accordingly
+  const checkGameOver = () => {
+    // correct guesses array may contain duplicate letters, so need to dedupe word letters
+    const uniqueLettersInWord = new Set(word);
+
+    // win when the number of unique letters in the word is the same as the number of correctly guessed letters
+    if (correctGuesses.length === uniqueLettersInWord.size) {
+      setHasWon(true);
+      setIsGameOver(true);
+    } else {
+      // lose when there are no lives left
+      if (remainingBadGuesses === 0) {
+        setHasWon(false);
+        setIsGameOver(true);
+      }
+    }
+  };
+
   return (
     <main className="board" data-testid="board">
       <Title />
       <Gallows />
       <CorrectGuesses word={word} correctGuesses={correctGuesses} />
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
-      <RemainingGuesses remainingBadGuesses={remainingBadGuesses} />
-      <PotentialGuesses
-        alphabet={props.alphabet}
-        handleGuess={handleGuess}
-        guessedLetters={guessedLetters}
-      />
-      <Result />
+      {!isGameOver && (
+        <>
+          <RemainingGuesses remainingBadGuesses={remainingBadGuesses} />
+          <PotentialGuesses
+            alphabet={props.alphabet}
+            handleGuess={handleGuess}
+            guessedLetters={guessedLetters}
+          />
+        </>
+      )}
+      {isGameOver && <Result />}
     </main>
   );
 };
