@@ -4,7 +4,7 @@ const CorrectGuesses = (props) => {
   const wordArray = Array.from(props.word);
 
   return (
-    <section className="hidden-word">
+    <section className="hidden-word" data-testid="correct-guesses">
       {wordArray.map((letter, index) => {
         if (props.correctGuesses.indexOf(letter) !== -1) {
           return <span key={`letter-${index}`}>{letter}</span>;
