@@ -23,7 +23,12 @@ const PotentialGuesses = (props) => {
   };
 
   return (
-    <section data-testid="potential-guesses" className="keyboard">
+    <section
+      data-testid="potential-guesses"
+      className="keyboard"
+      id="letters"
+      aria-label="Use these buttons to guess letters in the word  "
+    >
       {renderKeyboard()}
     </section>
   );

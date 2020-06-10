@@ -31,7 +31,7 @@ const CorrectGuesses = (props) => {
               className="hidden-word__letter"
               key={`letter-${index}`}
             >
-              word__letter
+              _
             </span>
           );
         }

@@ -12,7 +12,7 @@ const Gallows = (props) => {
   }
 
   return (
-    <div className={classes}>
+    <div aria-hidden="true" className={classes}>
       <HangmanSVG />
     </div>
   );
