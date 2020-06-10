@@ -9,6 +9,7 @@ const Result = (props) => {
   }
   return (
     <div
+      id="letters"
       className={classes}
       data-testid="result"
       aria-label={`You have ${props.hasWon ? " won " : "lost"} the game`}
