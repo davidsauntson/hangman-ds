@@ -2,6 +2,14 @@
 
 A small game made using `create-react-app` for the Citzens Advice technical test.
 
+## Instructions
+
+You will need `node.js` and `git` installed on your machine.
+
+- clone repo
+- `npm install` (this has been tested on a clean vagrant box (kieranpotts/nodejs13) so you should be ok :pray:)
+- `npm start` to run on a local server
+
 ## Planning
 
 ### High quality visualisation
