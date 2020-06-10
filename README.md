@@ -10,6 +10,10 @@ You will need `node.js` and `git` installed on your machine.
 - `npm install` (this has been tested on a clean vagrant box (kieranpotts/nodejs13) so you should be ok :pray:)
 - `npm start` to run on a local server
 
+Use `npm test` to run tests
+
+The app is created with `create-react-app`, [more info on this can be found here](https://create-react-app.dev/)
+
 ## Planning
 
 ### High quality visualisation
