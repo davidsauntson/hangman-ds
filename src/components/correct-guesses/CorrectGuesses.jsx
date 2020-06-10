@@ -5,22 +5,33 @@ const CorrectGuesses = (props) => {
 
   return (
     <div
+      id="word"
       className="hidden-word"
       data-testid="correct-guesses"
-      aria-live="assertive"
+      aria-live="polite"
       aria-label="The word to guess"
+      tabIndex="0"
     >
       {wordArray.map((letter, index) => {
         if (props.correctGuesses.indexOf(letter) !== -1) {
           return (
-            <span className="hidden-word__letter" key={`letter-${index}`}>
+            <span
+              tabIndex="0"
+              className="hidden-word__letter"
+              key={`letter-${index}`}
+            >
               {letter}
             </span>
           );
         } else {
           return (
-            <span className="hidden-word__letter" key={`letter-${index}`}>
-              _
+            <span
+              tabIndex="0"
+              aria-label="blank"
+              className="hidden-word__letter"
+              key={`letter-${index}`}
+            >
+              word__letter
             </span>
           );
         }

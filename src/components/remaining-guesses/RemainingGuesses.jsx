@@ -5,12 +5,7 @@ const RemainingGuesses = (props) => {
     <div className="lives-left">
       <span
         aria-live="polite"
-        aria-label={`You have ${props.remainingBadGuesses} guesses useLayoutEffect(() => {
-          effect
-          return () => {
-            cleanup
-          };
-        }, [input])`}
+        aria-label={`You have ${props.remainingBadGuesses} guesses left`}
         role="status"
         className="lives-left__count"
         data-testid="remaining-guesses"
