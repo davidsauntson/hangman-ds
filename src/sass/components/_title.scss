@@ -1,5 +1,6 @@
 .title {
   text-align: center;
+
   &__heading {
     color: $color--grey;
     margin: 0 0 20px 0;
@@ -8,5 +9,7 @@
 
   &__intro {
     color: $color--grey;
+    font-size: 20px;
+    font-weight: normal;
   }
 }
